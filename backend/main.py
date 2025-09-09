@@ -1014,8 +1014,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--file", help="视频完整路径", required=True)
     parser.add_argument("--area", help="字幕区域 ymin ymax xmin xmax", required=False, nargs=4, type=int)
-    args = parser.parse_args()
-    video_path = args.file
+    arguments = parser.parse_args()
+    video_path = arguments.file
     print(f"视频路径: {video_path}")
     # 提示用户输入视频路径
     # video_path = input(f"{config.interface_config['Main']['InputVideo']}").strip()
@@ -1026,7 +1026,7 @@ if __name__ == '__main__':
     #     subtitle_area = (y_min, y_max, x_min, x_max)
     # except ValueError as e:
     #     subtitle_area = None
-    subtitle_area = args.area if args.area else (833, 1063, 96, 1824)
+    subtitle_area = arguments.area if arguments.area else (833, 1063, 96, 1824)
     # subtitle_area = (833, 1063, 96, 1824)
     print(f"字幕区域: {subtitle_area}")
     # 新建字幕提取对象
