@@ -1015,7 +1015,7 @@ if __name__ == '__main__':
     # parser.add_argument("--file", help="视频完整路径", required=True)
     # parser.add_argument("--area", help="字幕区域 ymin ymax xmin xmax", required=False, nargs=4, type=int)
     # arguments = parser.parse_args()
-    video_path = sys.argv[1]
+    video_path = sys.argv[1].strip()
     print(f"视频路径: {video_path}")
     if not os.path.exists(video_path):
         print(f"视频文件 {video_path} 不存在")
