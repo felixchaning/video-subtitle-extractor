@@ -1011,17 +1011,19 @@ class SubtitleExtractor:
 
 if __name__ == '__main__':
     multiprocessing.set_start_method("spawn")
+    # 提示用户输入视频路径
+    video_path = input(f"{config.interface_config['Main']['InputVideo']}").strip()
     # parser = argparse.ArgumentParser()
     # parser.add_argument("--file", help="视频完整路径", required=True)
     # parser.add_argument("--area", help="字幕区域 ymin ymax xmin xmax", required=False, nargs=4, type=int)
     # arguments = parser.parse_args()
-    video_path = sys.argv[1].strip()
+    # video_path = arguments.file
+    # video_path = " ".join(sys.argv[1:]).strip()
     print(f"视频路径: {video_path}")
     if not os.path.exists(video_path):
         print(f"视频文件 {video_path} 不存在")
         sys.exit(1)
-    # 提示用户输入视频路径
-    # video_path = input(f"{config.interface_config['Main']['InputVideo']}").strip()
+
     # 提示用户输入字幕区域
     # try:
     #     y_min, y_max, x_min, x_max = map(int, input(
@@ -1030,10 +1032,10 @@ if __name__ == '__main__':
     # except ValueError as e:
     #     subtitle_area = None
 
-    subtitle_input = tuple(map(int, sys.argv[2:6]))
-    print(f"输入的字幕区域: {subtitle_input}")
-    subtitle_area = subtitle_input if subtitle_input else (833, 1063, 96, 1824)
-    # subtitle_area = (833, 1063, 96, 1824)
+    # subtitle_input = tuple(map(int, sys.argv[2:6]))
+    # print(f"输入的字幕区域: {subtitle_input}")
+    # subtitle_area = subtitle_input if subtitle_input else (833, 1063, 96, 1824)
+    subtitle_area = (833, 1063, 96, 1824)
     print(f"字幕区域: {subtitle_area}")
     # 新建字幕提取对象
     se = SubtitleExtractor(video_path, subtitle_area)
